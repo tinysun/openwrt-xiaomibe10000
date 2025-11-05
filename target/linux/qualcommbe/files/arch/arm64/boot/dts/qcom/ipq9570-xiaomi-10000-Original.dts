@@ -1,0 +1,108 @@
+/dts-v1/;
+/plugin/;
+
+/ {
+    model = "Xiaomi 10000 Original";
+    compatible = "xiaomi,10000,Original", "qcom,ipq9570";
+
+    memory@80000000 {
+        device_type = "memory";
+        reg = <0x80000000 0x80000000>; // 2GB DDR4
+    };
+
+    chosen {
+        bootargs = "console=ttyMSM0,115200n8";
+    };
+
+    aliases {
+        serial0 = &blsp1_uart1;
+    };
+
+    soc {
+        #address-cells = <1>;
+        #size-cells = <1>;
+        compatible = "simple-bus";
+        ranges;
+
+        blsp1_uart1: serial@78af000 {
+            compatible = "qcom,msm-uart";
+            reg = <0x78af000 0x1000>;
+            interrupts = <0 107 0>;
+            status = "okay";
+        };
+    };
+
+    gpio-keys {
+        compatible = "gpio-keys";
+        reset {
+            label = "reset";
+            gpios = <&tlmm 63 GPIO_ACTIVE_LOW>;
+            linux,code = <KEY_RESTART>;
+        };
+    };
+
+    leds {
+        compatible = "gpio-leds";
+        status {
+            label = "status";
+            gpios = <&tlmm 45 GPIO_ACTIVE_HIGH>;
+        };
+    };
+
+    ethernet@0 {
+        compatible = "qcom,nss-gmac";
+        reg = <0x00000000 0x10000>;
+        phy-mode = "rgmii";
+        phy-handle = <&phy0>;
+        status = "okay";
+    };
+
+    mdio {
+        #address-cells = <1>;
+        #size-cells = <0>;
+
+        phy0: ethernet-phy@0 {
+            reg = <0>;
+            compatible = "qca,qca8084"; // 2.5G PHY
+        };
+
+        phy1: ethernet-phy@1 {
+            reg = <1>;
+            compatible = "marvell,aqr113c"; // 10G PHY
+        };
+    };
+
+    wifi_2g {
+        compatible = "qcom,qcn6214";
+        status = "okay";
+        fems = "qpf4259";
+    };
+
+    wifi_5g_low {
+        compatible = "qcom,qcn6274";
+        status = "okay";
+        fems = "qpf4559";
+        filter = "5235B";
+    };
+
+    wifi_5g_high {
+        compatible = "qcom,qcn6274";
+        status = "okay";
+        fems = "qpf4559";
+        filter = "5697D";
+    };
+
+    flash@0 {
+        compatible = "jedec,spi-nor";
+        reg = <0>;
+        spi-max-frequency = <50000000>;
+        label = "spi-nor";
+        spi-flash-size = <0x10000000>; // 256MB
+    };
+
+    usb@a800000 {
+        compatible = "qcom,dwc3";
+        reg = <0xa800000 0x100000>;
+        status = "okay";
+    };
+};
