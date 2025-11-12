@@ -1,7 +1,7 @@
 /dts-v1/;
 /plugin/;
 #include <dt-bindings/gpio/gpio.h>
-#include "ipq9570.dtsi"
+#include "ipq9574.dtsi"
 / {
     model = "Xiaomi 10000 Original";
     compatible = "xiaomi,10000,Original", "qcom,ipq9570";
