@@ -4,7 +4,7 @@
 #include "ipq9574.dtsi"
 / {
     model = "Xiaomi 10000 Original";
-    compatible = "xiaomi,10000,Original", "qcom,ipq9570";
+    compatible = "xiaomi,10000,Original", "qcom,ipq9574";
 
     memory@80000000 {
         device_type = "memory";
