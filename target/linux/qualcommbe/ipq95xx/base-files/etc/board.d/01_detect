@@ -1,0 +1,3 @@
+qcom,qwrt)
+    board_name="qcom_qwrt"
+    ;;
