@@ -44,8 +44,8 @@ TARGET_DEVICES += xiaomi_be10000
 define Device/xiaomi_be10000_qwrt
     $(call Device/FitImage)
     DEVICE_VENDOR := Xiaomi
-    DEVICE_MODEL := BE10000
-    DEVICE_DTS_CONFIG := config@xiaomi-be10000
+    DEVICE_MODEL := BE10000_qwrt
+    DEVICE_DTS_CONFIG := config@xiaomi-be10000_qwrt
     SOC := ipq9570
     DEVICE_PACKAGES := kmod-ath12k ath12k-firmware-qcn6274 ath12k-firmware-qcn6214 \
                        ipq-wifi-xiaomi_be10000 kmod-phy-aqr113c kmod-phy-qca8084 \
