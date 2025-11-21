@@ -53,4 +53,4 @@ define Device/xiaomi_be10000_qwrt
     IMAGE/sysupgrade.bin := append-kernel | pad-to 64k | append-rootfs | pad-rootfs | check-size | append-metadata
     IMAGE/factory.bin := qsdk-ipq-factory-nor
 endef
-TARGET_DEVICES += xiaomi_be10000
+TARGET_DEVICES += xiaomi_be10000_qwrt
